@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 
 export default function App() {
     const products = [
@@ -17,5 +18,20 @@ export default function App() {
 
     products.forEach(printProductInfo);
 
-    return <h1>Hello World</h1>
+    return (
+        <div className="container">
+            <h1>Products List</h1>
+            <div className="line" />
+            <div className="product-list">
+                {products.map((product) => (
+                    <div className="product" key={product.name}>
+                        <div className="product-name">{product.name}</div>
+                        <div className="product-quantity">Quantity: {product.quantity}</div>
+                        <div className="product-price">Price: ${product.price}</div>
+                        <div className="product-tp">${calculateTotalPrice(product)}</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 }
